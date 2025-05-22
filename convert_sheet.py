@@ -18,6 +18,8 @@ from pathlib import Path
 from typing import Iterable
 
 from music21 import converter
+from music21.exceptions21 import SubConverterException
+import shutil
 
 
 SUPPORTED_EXTS = {".pdf", ".png", ".jpg", ".jpeg", ".tif", ".tiff"}
@@ -66,7 +68,23 @@ def run_audiveris(input_file: Path, output_dir: Path) -> Path:
 def render_pdf(xml_file: Path, output_file: Path) -> None:
     """Render ``xml_file`` to ``output_file`` using music21."""
     score = converter.parse(str(xml_file))
-    score.write("musicxml.pdf", fp=str(output_file))
+
+    # MuseScore is required for PDF rendering
+    if not (shutil.which("mscore") or shutil.which("musescore")):
+        print(
+            "MuseScore executable not found. Please install MuseScore and ensure it is on your PATH.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
+    try:
+        score.write("musicxml.pdf", fp=str(output_file))
+    except SubConverterException:
+        print(
+            "Failed to render PDF with MuseScore. Please ensure MuseScore is installed and on your PATH.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
 
 
 def process_files(files: Iterable[Path], output_dir: Path) -> None:
