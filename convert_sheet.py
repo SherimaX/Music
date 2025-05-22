@@ -19,7 +19,6 @@ from pathlib import Path
 from typing import Iterable
 
 from music21 import converter
-from music21.exceptions21 import SubConverterException
 import shutil
 
 
@@ -67,11 +66,15 @@ def run_audiveris(input_file: Path, output_dir: Path) -> Path:
 
 
 def render_pdf(xml_file: Path, output_file: Path) -> None:
-    """Render ``xml_file`` to ``output_file`` using music21."""
-    score = converter.parse(str(xml_file))
+    """Render ``xml_file`` to ``output_file`` using MuseScore."""
+    try:
+        converter.parse(str(xml_file))  # parse to validate the file
+    except Exception as exc:  # pragma: no cover - defensive catch
+        print(f"Failed to parse {xml_file}: {exc}", file=sys.stderr)
+        return
 
-    # MuseScore is required for PDF rendering
-    if not (shutil.which("mscore") or shutil.which("musescore")):
+    mscore_bin = shutil.which("mscore") or shutil.which("musescore")
+    if not mscore_bin:
         print(
             "MuseScore executable not found. Please install MuseScore and ensure it is on your PATH.",
             file=sys.stderr,
@@ -79,12 +82,9 @@ def render_pdf(xml_file: Path, output_file: Path) -> None:
         sys.exit(1)
 
     try:
-        score.write("musicxml.pdf", fp=str(output_file))
-    except SubConverterException:
-        print(
-            "Failed to render PDF with MuseScore. Please ensure MuseScore is installed and on your PATH.",
-            file=sys.stderr,
-        )
+        subprocess.run([mscore_bin, str(xml_file), "-o", str(output_file)], check=True)
+    except (subprocess.CalledProcessError, FileNotFoundError) as exc:
+        print("Failed to render PDF with MuseScore:", exc, file=sys.stderr)
         sys.exit(1)
 
 
@@ -118,25 +118,28 @@ def midi_to_mp3(midi_file: Path, mp3_file: Path) -> None:
 
 def process_files(files: Iterable[Path], output_dir: Path, review: bool = False) -> None:
     for f in files:
-        xml_file = run_audiveris(f, output_dir)
-        pdf_file = output_dir / f"{xml_file.stem}.pdf"
-        render_pdf(xml_file, pdf_file)
-        midi_file = output_dir / f"{xml_file.stem}.mid"
-        render_midi(xml_file, midi_file)
-        mp3_file = output_dir / f"{xml_file.stem}.mp3"
-        midi_to_mp3(midi_file, mp3_file)
-        print(f"Generated {xml_file}")
-        print(f"Generated {pdf_file}")
-        print(f"Generated {midi_file}")
-        print(f"Generated {mp3_file}")
-        if review:
-            try:
-                score = converter.parse(str(xml_file))
-                score.show()
-            except Exception:
-                mscore_bin = shutil.which("mscore") or shutil.which("musescore")
-                if mscore_bin:
-                    subprocess.run([mscore_bin, str(pdf_file)], check=False)
+        try:
+            xml_file = run_audiveris(f, output_dir)
+            pdf_file = output_dir / f"{xml_file.stem}.pdf"
+            render_pdf(xml_file, pdf_file)
+            midi_file = output_dir / f"{xml_file.stem}.mid"
+            render_midi(xml_file, midi_file)
+            mp3_file = output_dir / f"{xml_file.stem}.mp3"
+            midi_to_mp3(midi_file, mp3_file)
+            print(f"Generated {xml_file}")
+            print(f"Generated {pdf_file}")
+            print(f"Generated {midi_file}")
+            print(f"Generated {mp3_file}")
+            if review:
+                try:
+                    score = converter.parse(str(xml_file))
+                    score.show()
+                except Exception:
+                    mscore_bin = shutil.which("mscore") or shutil.which("musescore")
+                    if mscore_bin:
+                        subprocess.run([mscore_bin, str(pdf_file)], check=False)
+        except Exception as exc:
+            print(f"Error processing {f}: {exc}", file=sys.stderr)
 
 
 def main() -> None:
