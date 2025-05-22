@@ -13,6 +13,7 @@ Audiveris must be installed and available on the command line.
 
 import argparse
 import subprocess
+import sys
 from pathlib import Path
 from typing import Iterable
 
@@ -25,12 +26,19 @@ SUPPORTED_EXTS = {".pdf", ".png", ".jpg", ".jpeg", ".tif", ".tiff"}
 def run_audiveris(input_file: Path, output_dir: Path) -> Path:
     """Run Audiveris on ``input_file`` and return the path to the MusicXML output."""
     output_dir.mkdir(parents=True, exist_ok=True)
-    result = subprocess.run(
-        ["audiveris", "-batch", str(input_file), "-export", "-output", str(output_dir)],
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        check=True,
-    )
+    try:
+        result = subprocess.run(
+            ["audiveris", "-batch", str(input_file), "-export", "-output", str(output_dir)],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            check=True,
+        )
+    except FileNotFoundError:
+        print(
+            "Audiveris executable not found. Please install Audiveris and ensure it is on your PATH.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
     xml_file = output_dir / f"{input_file.stem}.xml"
     return xml_file
 
