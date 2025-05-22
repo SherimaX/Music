@@ -24,11 +24,24 @@ SUPPORTED_EXTS = {".pdf", ".png", ".jpg", ".jpeg", ".tif", ".tiff"}
 
 
 def run_audiveris(input_file: Path, output_dir: Path) -> Path:
-    """Run Audiveris on ``input_file`` and return the path to the MusicXML output."""
+    """Run Audiveris on ``input_file`` and return the generated MusicXML file path.
+
+    After the Audiveris process completes, ``output_dir`` is searched
+    recursively for files matching ``<input_file.stem>*.xml`` or
+    ``<input_file.stem>*.mxl``.  If a match is found the first matching path is
+    returned.  If no MusicXML file is produced an exception is raised.
+    """
     output_dir.mkdir(parents=True, exist_ok=True)
     try:
-        result = subprocess.run(
-            ["audiveris", "-batch", str(input_file), "-export", "-output", str(output_dir)],
+        subprocess.run(
+            [
+                "audiveris",
+                "-batch",
+                str(input_file),
+                "-export",
+                "-output",
+                str(output_dir),
+            ],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             check=True,
@@ -39,8 +52,15 @@ def run_audiveris(input_file: Path, output_dir: Path) -> Path:
             file=sys.stderr,
         )
         sys.exit(1)
-    xml_file = output_dir / f"{input_file.stem}.xml"
-    return xml_file
+
+    for pattern in (f"{input_file.stem}*.xml", f"{input_file.stem}*.mxl"):
+        matches = list(output_dir.rglob(pattern))
+        if matches:
+            return matches[0]
+
+    raise FileNotFoundError(
+        f"Audiveris did not produce a MusicXML file for {input_file} in {output_dir}"
+    )
 
 
 def render_pdf(xml_file: Path, output_file: Path) -> None:
