@@ -62,6 +62,14 @@ Instead of running Audiveris manually, you can call **`convert_sheet.py`** to au
 python convert_sheet.py input.pdf -o output/
 ```
 
+Add `--review` to open the generated score after each file is processed:
+
+```bash
+python convert_sheet.py input.pdf -o output/ --review
+```
+
+This step requires a working MuseScore installation so that `mscore` can display the result.
+
 The script accepts a single image/PDF *or* a directory of files and places the
 generated MusicXML, PDF, MIDI, and MP3 files in the chosen output directory. Look for a file
 named `input.mxl` (or `input.xml`) inside `output/` or its subfolders.

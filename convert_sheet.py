@@ -116,7 +116,7 @@ def midi_to_mp3(midi_file: Path, mp3_file: Path) -> None:
     wav_file.unlink(missing_ok=True)
 
 
-def process_files(files: Iterable[Path], output_dir: Path) -> None:
+def process_files(files: Iterable[Path], output_dir: Path, review: bool = False) -> None:
     for f in files:
         xml_file = run_audiveris(f, output_dir)
         pdf_file = output_dir / f"{xml_file.stem}.pdf"
@@ -129,6 +129,14 @@ def process_files(files: Iterable[Path], output_dir: Path) -> None:
         print(f"Generated {pdf_file}")
         print(f"Generated {midi_file}")
         print(f"Generated {mp3_file}")
+        if review:
+            try:
+                score = converter.parse(str(xml_file))
+                score.show()
+            except Exception:
+                mscore_bin = shutil.which("mscore") or shutil.which("musescore")
+                if mscore_bin:
+                    subprocess.run([mscore_bin, str(pdf_file)], check=False)
 
 
 def main() -> None:
@@ -143,6 +151,11 @@ def main() -> None:
         default=Path("output"),
         help="Directory for generated files",
     )
+    parser.add_argument(
+        "--review",
+        action="store_true",
+        help="Open each generated score for manual review",
+    )
     args = parser.parse_args()
 
     if args.input_path.is_dir():
@@ -150,7 +163,7 @@ def main() -> None:
     else:
         files = [args.input_path]
 
-    process_files(files, args.output_dir)
+    process_files(files, args.output_dir, review=args.review)
 
 
 if __name__ == "__main__":
