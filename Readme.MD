@@ -32,13 +32,15 @@ Audiveris is a standalone Java application; install it separately and make sure 
 ## 2. Convert image to MusicXML
 
 1. Place a scanned image or PDF of a piano-solo piece in a working directory.
-2. Run Audiveris on the file to produce a `.xml` MusicXML file:
+2. Run Audiveris on the file to produce a MusicXML file:
 
    ```bash
-   audiveris -batch input.pdf -export
+   audiveris -batch input.pdf -export -output out_dir/
    ```
 
-   This generates `input.xml` alongside the original image/PDF.
+   Audiveris writes the result to `out_dir/`. Depending on the version, the
+   MusicXML may be saved as `input.mxl` (compressed) and can appear either
+   directly under `out_dir/` or within a subfolder.
 
 ### 2.1 Python helper script
 
@@ -48,7 +50,9 @@ Instead of running Audiveris manually, you can call **`convert_sheet.py`** to au
 python convert_sheet.py input.pdf -o output/
 ```
 
-The script accepts a single image/PDF *or* a directory of files and places the generated MusicXML and PDF files in the chosen output directory.
+The script accepts a single image/PDF *or* a directory of files and places the
+generated MusicXML and PDF files in the chosen output directory. Look for a file
+named `input.mxl` (or `input.xml`) inside `output/` or its subfolders.
 
 ## Troubleshooting
 
@@ -85,7 +89,7 @@ After these steps you will have:
 
 | File         | Description                              |
 | ------------ | ---------------------------------------- |
-| `input.xml`  | MusicXML score produced by Audiveris     |
+| `input.mxl`  | MusicXML score produced by Audiveris (may also be `input.xml`) |
 | `output.pdf` | Rendered sheet music produced by music21 |
 
 ---
