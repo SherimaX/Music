@@ -15,7 +15,16 @@ Once this minimal pipeline works, we can extend it into a full Flask web applica
 - Python 3.8 +
 - [`music21`](https://web.mit.edu/music21/)
 - [`Audiveris`](https://audiveris.github.io/audiveris/) for optical music recognition
+- [`MuseScore`](https://musescore.org) (provides the `mscore` command for PDF rendering)
 - (Later) `Flask` for a simple web API
+
+On most Linux distributions you can install MuseScore with:
+
+```bash
+sudo apt install musescore
+```
+
+Alternatively, download it from the MuseScore website.
 
 Create a virtual environment and install **music21**:
 
@@ -64,6 +73,14 @@ audiveris --help
 ```
 
 If this command fails, adjust your `PATH` so that the Audiveris executable can be found.
+
+To verify that MuseScore is available, run:
+
+```bash
+mscore --version
+```
+
+If this command fails, either adjust your `PATH` or set `music21.environment.UserSettings()['musescoreDirectPNGPath']` to the full path of the `mscore` binary.
 
 ---
 
