@@ -50,6 +50,17 @@ python convert_sheet.py input.pdf -o output/
 
 The script accepts a single image/PDF *or* a directory of files and places the generated MusicXML and PDF files in the chosen output directory.
 
+## Troubleshooting
+
+If you run the helper script (or Audiveris directly) and encounter a `FileNotFoundError` or a message saying that `audiveris` cannot be located, the tool is not on your `PATH`.
+Verify the installation with:
+
+```bash
+audiveris --help
+```
+
+If this command fails, adjust your `PATH` so that the Audiveris executable can be found.
+
 ---
 
 ## 3. Generate PDF with music21
