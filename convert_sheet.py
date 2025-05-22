@@ -55,6 +55,12 @@ def run_audiveris(input_file: Path, output_dir: Path) -> Path:
             file=sys.stderr,
         )
         sys.exit(1)
+    except subprocess.CalledProcessError as exc:
+        err = exc.stderr.decode().strip() if isinstance(exc.stderr, bytes) else str(exc.stderr)
+        print(f"Audiveris failed to process {input_file}:", file=sys.stderr)
+        if err:
+            print(err, file=sys.stderr)
+        sys.exit(1)
 
     for pattern in (f"{input_file.stem}*.xml", f"{input_file.stem}*.mxl"):
         matches = list(output_dir.rglob(pattern))
