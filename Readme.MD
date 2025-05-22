@@ -1,10 +1,11 @@
 # Piano Sheet Processing Roadmap
 
 This project converts scanned classical piano sheet music into a machine-readable format.  
-The short-term goal is a backend-only pipeline that produces two artifacts:
+The short-term goal is a backend-only pipeline that produces three artifacts:
 
 1. **A MusicXML representation of the score.**  
 2. **A PDF rendering generated from that MusicXML.**
+3. **A MIDI file generated from that MusicXML.**
 
 Once this minimal pipeline works, we can extend it into a full Flask web application with an interactive music-sheet viewer.
 
@@ -53,14 +54,14 @@ Audiveris is a standalone Java application; install it separately and make sure 
 
 ### 2.1 Python helper script
 
-Instead of running Audiveris manually, you can call **`convert_sheet.py`** to automate the conversion **and** the PDF rendering:
+Instead of running Audiveris manually, you can call **`convert_sheet.py`** to automate the conversion **and** the PDF and MIDI rendering:
 
 ```bash
 python convert_sheet.py input.pdf -o output/
 ```
 
 The script accepts a single image/PDF *or* a directory of files and places the
-generated MusicXML and PDF files in the chosen output directory. Look for a file
+generated MusicXML, PDF, and MIDI files in the chosen output directory. Look for a file
 named `input.mxl` (or `input.xml`) inside `output/` or its subfolders.
 
 ## Troubleshooting
