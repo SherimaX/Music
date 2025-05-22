@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Convert a scanned piano sheet into MusicXML, PDF, and MIDI.
+"""Convert a scanned piano sheet into MusicXML, PDF, MIDI, and MP3.
 
 This script uses Audiveris to perform optical music recognition on a single-page
 image or PDF and then uses music21 to generate PDF and MIDI renderings of the
-resulting MusicXML file.
+resulting MusicXML file. The MIDI is further converted to MP3 using ``timidity``
+and ``ffmpeg``.
 
 Example:
     python convert_sheet.py input.pdf -o output_dir
@@ -93,6 +94,28 @@ def render_midi(xml_file: Path, output_file: Path) -> None:
     score.write("midi", fp=str(output_file))
 
 
+def midi_to_mp3(midi_file: Path, mp3_file: Path) -> None:
+    """Convert ``midi_file`` to ``mp3_file`` using timidity and ffmpeg."""
+    wav_file = midi_file.with_suffix(".wav")
+
+    if not shutil.which("timidity"):
+        print(
+            "timidity executable not found. Please install timidity and ensure it is on your PATH.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+    if not shutil.which("ffmpeg"):
+        print(
+            "ffmpeg executable not found. Please install ffmpeg and ensure it is on your PATH.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
+    subprocess.run(["timidity", str(midi_file), "-Ow", "-o", str(wav_file)], check=True)
+    subprocess.run(["ffmpeg", "-y", "-i", str(wav_file), str(mp3_file)], check=True)
+    wav_file.unlink(missing_ok=True)
+
+
 def process_files(files: Iterable[Path], output_dir: Path) -> None:
     for f in files:
         xml_file = run_audiveris(f, output_dir)
@@ -100,13 +123,18 @@ def process_files(files: Iterable[Path], output_dir: Path) -> None:
         render_pdf(xml_file, pdf_file)
         midi_file = output_dir / f"{xml_file.stem}.mid"
         render_midi(xml_file, midi_file)
+        mp3_file = output_dir / f"{xml_file.stem}.mp3"
+        midi_to_mp3(midi_file, mp3_file)
         print(f"Generated {xml_file}")
         print(f"Generated {pdf_file}")
         print(f"Generated {midi_file}")
+        print(f"Generated {mp3_file}")
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Convert sheet images to MusicXML and PDF")
+    parser = argparse.ArgumentParser(
+        description="Convert sheet images to MusicXML, PDF, MIDI, and MP3"
+    )
     parser.add_argument("input_path", type=Path, help="Image/PDF file or directory of files")
     parser.add_argument(
         "-o",
