@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Convert a scanned piano sheet into MusicXML and PDF.
+"""Convert a scanned piano sheet into MusicXML, PDF, and MIDI.
 
 This script uses Audiveris to perform optical music recognition on a single-page
-image or PDF and then uses music21 to generate a PDF rendering of the resulting
-MusicXML file.
+image or PDF and then uses music21 to generate PDF and MIDI renderings of the
+resulting MusicXML file.
 
 Example:
     python convert_sheet.py input.pdf -o output_dir
@@ -87,13 +87,22 @@ def render_pdf(xml_file: Path, output_file: Path) -> None:
         sys.exit(1)
 
 
+def render_midi(xml_file: Path, output_file: Path) -> None:
+    """Render ``xml_file`` to ``output_file`` as a MIDI file using music21."""
+    score = converter.parse(str(xml_file))
+    score.write("midi", fp=str(output_file))
+
+
 def process_files(files: Iterable[Path], output_dir: Path) -> None:
     for f in files:
         xml_file = run_audiveris(f, output_dir)
         pdf_file = output_dir / f"{xml_file.stem}.pdf"
         render_pdf(xml_file, pdf_file)
+        midi_file = output_dir / f"{xml_file.stem}.mid"
+        render_midi(xml_file, midi_file)
         print(f"Generated {xml_file}")
         print(f"Generated {pdf_file}")
+        print(f"Generated {midi_file}")
 
 
 def main() -> None:
