@@ -1,0 +1,89 @@
+2025-05-22 00:10:17,514 INFO [test_chopin]                 Book.java:562  | 1 sheet in /mnt/c/Users/anan9/Desktop/Projects/Music/test_chopin.jpg
+2025-05-22 00:10:17,616 INFO []                 Book.java:2531 | Stored /book.xml
+2025-05-22 00:10:17,616 INFO []                 Book.java:2491 | Book stored as output/test_chopin.omr
+2025-05-22 00:10:17,623 INFO []                 Book.java:1933 | Book reaching PAGE on sheets:[#1]
+2025-05-22 00:10:17,624 INFO [test_chopin]       StepMonitoring.java:98   | LOAD
+2025-05-22 00:10:18,559 INFO [test_chopin]            SheetStub.java:1268 | Loaded image #1 1850x2441 from /mnt/c/Users/anan9/Desktop/Projects/Music/test_chopin.jpg
+2025-05-22 00:10:18,562 INFO [test_chopin]            ImageUtil.java:124  | Converting max RGB to gray
+2025-05-22 00:10:18,629 INFO [test_chopin]       StepMonitoring.java:98   | BINARY
+2025-05-22 00:10:18,768 INFO [test_chopin]       StepMonitoring.java:98   | SCALE
+2025-05-22 00:10:18,778 INFO [test_chopin]         ScaleBuilder.java:241  | Beam  guessed height:  7 -- 0.50 of 14 interline
+2025-05-22 00:10:18,779 INFO [test_chopin]         ScaleBuilder.java:264  | Beam measured height:  8 -- 0.40 of [4..14] range at 306% of needed quorum
+2025-05-22 00:10:18,780 INFO [test_chopin]            ScaleStep.java:65   | Scale{ interline(13,14,14) line(2,3,4) beam(8)}
+2025-05-22 00:10:18,780 INFO [test_chopin]       StepMonitoring.java:98   | GRID
+2025-05-22 00:10:19,071 INFO [test_chopin]       LinesRetriever.java:1500 | Global slope: 0.00000
+2025-05-22 00:10:19,100 INFO [test_chopin]    ClustersRetriever.java:328  | Retrieved raw line clusters: 10 of sizes [5] with interline(13,14,14)
+2025-05-22 00:10:19,238 INFO [test_chopin]            PeakGraph.java:310  | Systems: #1[1, 2] #2[3, 4] #3[5, 6] #4[7, 8] #5[9, 10]
+2025-05-22 00:10:19,450 INFO [test_chopin]        SystemManager.java:134  | Indentation detected for system #1
+2025-05-22 00:10:19,451 INFO [test_chopin]        SystemManager.java:779  | 1 part along 5 systems
+2025-05-22 00:10:19,452 INFO [test_chopin]                 Book.java:545  | Created scores: [{Score 1}]
+2025-05-22 00:10:19,452 INFO [test_chopin]       StepMonitoring.java:98   | HEADERS
+2025-05-22 00:10:19,566 INFO [test_chopin]      BasicClassifier.java:277  | Classifier loaded XML norms.
+2025-05-22 00:10:19,569 INFO [test_chopin]   AbstractClassifier.java:396  | Classifier data loaded from default uri jar:file:/opt/audiveris/lib/app/audiveris.jar!/res/basic-classifier.zip
+2025-05-22 00:10:19,846 INFO [test_chopin]       StepMonitoring.java:98   | STEM_SEEDS
+2025-05-22 00:10:19,870 INFO [test_chopin]        StemSeedsStep.java:86   | stem(3 max:5)
+2025-05-22 00:10:19,909 INFO [test_chopin]       StepMonitoring.java:98   | BEAMS
+2025-05-22 00:10:20,627 INFO [test_chopin]       StepMonitoring.java:98   | LEDGERS
+2025-05-22 00:10:20,784 INFO [test_chopin]       StepMonitoring.java:98   | HEADS
+2025-05-22 00:10:21,945 INFO [test_chopin]        HeadSeedTally.java:235  | Scale information: HeadSeeds{NOTEHEAD_VOID[L:0.5,R:0.0] NOTEHEAD_BLACK[L:0.1,R:0.1]}
+2025-05-22 00:10:21,945 INFO [test_chopin]       StepMonitoring.java:98   | STEMS
+2025-05-22 00:10:22,436 INFO [test_chopin]       StepMonitoring.java:98   | REDUCTION
+2025-05-22 00:10:22,546 INFO [test_chopin]        ReductionStep.java:105  | Stems free length median value: 49 pixels, 3.5 interlines
+2025-05-22 00:10:22,550 INFO [test_chopin]       StepMonitoring.java:98   | CUE_BEAMS
+2025-05-22 00:10:22,551 INFO [test_chopin]         CueBeamsStep.java:81   | Step CUE_BEAMS is skipped because small heads switch is off
+2025-05-22 00:10:22,551 INFO [test_chopin]       StepMonitoring.java:98   | TEXTS
+2025-05-22 00:10:23,863 INFO [test_chopin]       StepMonitoring.java:98   | MEASURES
+2025-05-22 00:10:23,869 INFO [test_chopin]                 Page.java:307  | 18 raw measures: [3 in system#1, 4 in system#2, 4 in system#3, 4 in system#4, 3 in system#5]
+2025-05-22 00:10:23,869 INFO [test_chopin]       StepMonitoring.java:98   | CHORDS
+2025-05-22 00:10:23,879 INFO [test_chopin]       StepMonitoring.java:98   | CURVES
+2025-05-22 00:10:24,318 INFO [test_chopin]         SlursBuilder.java:240  | Slurs: 29
+2025-05-22 00:10:24,339 INFO [test_chopin]      SegmentsBuilder.java:155  | Segments: 15
+2025-05-22 00:10:24,343 INFO [test_chopin]       StepMonitoring.java:98   | SYMBOLS
+2025-05-22 00:10:24,700 INFO [test_chopin]       StepMonitoring.java:98   | LINKS
+2025-05-22 00:10:24,730 INFO [test_chopin]        SentenceInter.java:447  | No measure stack for SentenceInter#8888{(0.900) staff:10 mFont:IS-18 Direction} Vervielfﬁltigungen jeglicher Art sind gesetzlich verboten.
+2025-05-22 00:10:24,730 INFO [test_chopin]        SentenceInter.java:447  | No measure stack for SentenceInter#8895{(0.767) staff:10 mFont:IS-19 Direction} © 1980 by G. Henle Verlag, Miinchen
+2025-05-22 00:10:24,736 INFO [test_chopin]       StepMonitoring.java:98   | RHYTHMS
+2025-05-22 00:10:24,760 INFO [test_chopin]        MeasureRhythm.java:1045 | Measure{#7} No timeOffset for RestChordInter#10773{(0.570/0.570) staff:3 slot#10 dur:1/4}
+2025-05-22 00:10:24,761 INFO [test_chopin]                Voice.java:257  | Measure{#7} Voice{#1 excess:3/16} too long
+2025-05-22 00:10:24,761 INFO [test_chopin]          StackRhythm.java:224  | S2 MeasureStack#7 no correct rhythm
+2025-05-22 00:10:24,763 INFO [test_chopin]        MeasureRhythm.java:1045 | Measure{#8} No timeOffset for RestChordInter#10908{(0.800/0.800) staff:5 slot#9 dur:1/4}
+2025-05-22 00:10:24,764 INFO [test_chopin]        MeasureRhythm.java:1045 | Measure{#8} No timeOffset for HeadChordInter#9055{(0.967/0.967) staff:6 slot#9 dur:1/4}
+2025-05-22 00:10:24,764 INFO [test_chopin]          StackRhythm.java:224  | S3 MeasureStack#8 no correct rhythm
+2025-05-22 00:10:24,767 INFO [test_chopin]                Voice.java:257  | Measure{#10} Voice{#6 excess:5/48} too long
+2025-05-22 00:10:24,767 INFO [test_chopin]          StackRhythm.java:224  | S3 MeasureStack#10 no correct rhythm
+2025-05-22 00:10:24,770 INFO [test_chopin]        MeasureRhythm.java:1045 | Measure{#12} No timeOffset for RestChordInter#11023{(0.775/0.775) staff:8 slot#10 dur:1/16}
+2025-05-22 00:10:24,771 INFO [test_chopin]   AbstractChordInter.java:627  | Measure{#12} No timeOffset for RestChordInter#11023{(0.775/0.775) staff:8 slot#10 dur:1/16}
+2025-05-22 00:10:24,771 INFO [test_chopin]                Voice.java:257  | Measure{#12} Voice{#1 excess:1/8} too long
+2025-05-22 00:10:24,772 INFO [test_chopin]          StackRhythm.java:224  | S4 MeasureStack#12 no correct rhythm
+2025-05-22 00:10:24,773 INFO [test_chopin]                Voice.java:257  | Measure{#13} Voice{#5 excess:3/16} too long
+2025-05-22 00:10:24,773 INFO [test_chopin]          StackRhythm.java:224  | S4 MeasureStack#13 no correct rhythm
+2025-05-22 00:10:24,774 INFO [test_chopin]                Voice.java:257  | Measure{#14} Voice{#5 excess:3/16} too long
+2025-05-22 00:10:24,775 INFO [test_chopin]          StackRhythm.java:224  | S4 MeasureStack#14 no correct rhythm
+2025-05-22 00:10:24,776 INFO [test_chopin]                Voice.java:257  | Measure{#15} Voice{#1 excess:1/4} too long
+2025-05-22 00:10:24,776 INFO [test_chopin]                Voice.java:257  | Measure{#15} Voice{#5 excess:1/4} too long
+2025-05-22 00:10:24,777 INFO [test_chopin]                Voice.java:257  | Measure{#15} Voice{#6 excess:1/4} too long
+2025-05-22 00:10:24,777 INFO [test_chopin]          StackRhythm.java:224  | S4 MeasureStack#15 no correct rhythm
+2025-05-22 00:10:24,778 INFO [test_chopin]                Voice.java:257  | Measure{#16} Voice{#5 excess:3/16} too long
+2025-05-22 00:10:24,778 INFO [test_chopin]          StackRhythm.java:224  | S5 MeasureStack#16 no correct rhythm
+2025-05-22 00:10:24,781 INFO [test_chopin]       StepMonitoring.java:98   | PAGE
+2025-05-22 00:10:24,784 INFO [test_chopin]                Voice.java:257  | Measure{#7} Voice{#1 excess:3/16} too long
+2025-05-22 00:10:24,784 INFO [test_chopin]                Voice.java:257  | Measure{#10} Voice{#6 excess:5/48} too long
+2025-05-22 00:10:24,784 INFO [test_chopin]                Voice.java:257  | Measure{#12} Voice{#1 excess:1/8} too long
+2025-05-22 00:10:24,785 INFO [test_chopin]                Voice.java:257  | Measure{#13} Voice{#5 excess:3/16} too long
+2025-05-22 00:10:24,785 INFO [test_chopin]                Voice.java:257  | Measure{#14} Voice{#5 excess:3/16} too long
+2025-05-22 00:10:24,785 INFO [test_chopin]                Voice.java:257  | Measure{#15} Voice{#1 excess:1/4} too long
+2025-05-22 00:10:24,785 INFO [test_chopin]                Voice.java:257  | Measure{#15} Voice{#5 excess:1/4} too long
+2025-05-22 00:10:24,785 INFO [test_chopin]                Voice.java:257  | Measure{#15} Voice{#6 excess:1/4} too long
+2025-05-22 00:10:24,785 INFO [test_chopin]                Voice.java:257  | Measure{#16} Voice{#5 excess:3/16} too long
+2025-05-22 00:10:24,786 INFO [test_chopin]                 Book.java:2550 | Book{test_chopin} storing
+2025-05-22 00:10:24,840 INFO [test_chopin]                 Book.java:2531 | Stored /book.xml
+2025-05-22 00:10:24,883 INFO [test_chopin]           DataHolder.java:348  | Stored /sheet#1/BINARY.png
+2025-05-22 00:10:25,312 INFO [test_chopin]                Sheet.java:1562 | Stored /sheet#1/sheet#1.xml
+2025-05-22 00:10:25,314 INFO [test_chopin]                 Book.java:2491 | Book stored as output/test_chopin.omr
+2025-05-22 00:10:25,323 INFO [test_chopin]            SheetStub.java:1644 | Disposed sheet
+2025-05-22 00:10:25,353 INFO [test_chopin]                 Book.java:2018 | End of Stub#1 memory: 29,725,944
+2025-05-22 00:10:25,354 INFO [test_chopin]                 Book.java:2025 | Book processed.
+2025-05-22 00:10:25,648 INFO [test_chopin]            SheetStub.java:995  | Loaded /sheet#1/sheet#1.xml
+2025-05-22 00:10:25,834 INFO [test_chopin]      PartwiseBuilder.java:2661 | Exporting sheet(s): [#1]
+2025-05-22 00:10:25,903 INFO [test_chopin]        ScoreExporter.java:164  | Score test_chopin exported to output/test_chopin.mxl
+2025-05-22 00:10:25,938 INFO [test_chopin]                Score.java:181  | Closing {Score 1}

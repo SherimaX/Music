@@ -1,0 +1,66 @@
+2025-05-22 00:12:21,793 INFO [test_bach]                 Book.java:562  | 1 sheet in /mnt/c/Users/anan9/Desktop/Projects/Music/test_bach.jpg
+2025-05-22 00:12:21,868 INFO []                 Book.java:2531 | Stored /book.xml
+2025-05-22 00:12:21,869 INFO []                 Book.java:2491 | Book stored as output/test_bach.omr
+2025-05-22 00:12:21,875 INFO []                 Book.java:1933 | Book reaching PAGE on sheets:[#1]
+2025-05-22 00:12:21,876 INFO [test_bach]       StepMonitoring.java:98   | LOAD
+2025-05-22 00:12:22,423 INFO [test_bach]            SheetStub.java:1268 | Loaded image #1 1850x2441 from /mnt/c/Users/anan9/Desktop/Projects/Music/test_bach.jpg
+2025-05-22 00:12:22,434 INFO [test_bach]            ImageUtil.java:124  | Converting max RGB to gray
+2025-05-22 00:12:22,502 INFO [test_bach]       StepMonitoring.java:98   | BINARY
+2025-05-22 00:12:22,649 INFO [test_bach]       StepMonitoring.java:98   | SCALE
+2025-05-22 00:12:22,659 INFO [test_bach]         ScaleBuilder.java:241  | Beam  guessed height:  7 -- 0.50 of 14 interline
+2025-05-22 00:12:22,659 INFO [test_bach]         ScaleBuilder.java:264  | Beam measured height:  8 -- 0.40 of [4..14] range at 477% of needed quorum
+2025-05-22 00:12:22,660 INFO [test_bach]            ScaleStep.java:65   | Scale{ interline(13,14,15) line(2,3,4) beam(8)}
+2025-05-22 00:12:22,660 INFO [test_bach]       StepMonitoring.java:98   | GRID
+2025-05-22 00:12:22,876 INFO [test_bach]       LinesRetriever.java:1500 | Global slope: 0.00135
+2025-05-22 00:12:22,893 INFO [test_bach]    ClustersRetriever.java:328  | Retrieved raw line clusters: 8 of sizes [5] with interline(13,14,15)
+2025-05-22 00:12:22,964 INFO [test_bach]            PeakGraph.java:310  | Systems: #1[1, 2] #2[3, 4] #3[5, 6] #4[7, 8]
+2025-05-22 00:12:23,120 INFO [test_bach]        SystemManager.java:134  | Indentation detected for system #1
+2025-05-22 00:12:23,121 INFO [test_bach]        SystemManager.java:779  | 1 part along 4 systems
+2025-05-22 00:12:23,122 INFO [test_bach]                 Book.java:545  | Created scores: [{Score 1}]
+2025-05-22 00:12:23,122 INFO [test_bach]       StepMonitoring.java:98   | HEADERS
+2025-05-22 00:12:23,233 INFO [test_bach]      BasicClassifier.java:277  | Classifier loaded XML norms.
+2025-05-22 00:12:23,236 INFO [test_bach]   AbstractClassifier.java:396  | Classifier data loaded from default uri jar:file:/opt/audiveris/lib/app/audiveris.jar!/res/basic-classifier.zip
+2025-05-22 00:12:23,464 INFO [test_bach]       StepMonitoring.java:98   | STEM_SEEDS
+2025-05-22 00:12:23,486 INFO [test_bach]        StemSeedsStep.java:86   | stem(3 max:4)
+2025-05-22 00:12:23,516 INFO [test_bach]       StepMonitoring.java:98   | BEAMS
+2025-05-22 00:12:24,193 INFO [test_bach]       StepMonitoring.java:98   | LEDGERS
+2025-05-22 00:12:24,272 INFO [test_bach]       StepMonitoring.java:98   | HEADS
+2025-05-22 00:12:24,982 INFO [test_bach]        HeadSeedTally.java:235  | Scale information: HeadSeeds{NOTEHEAD_VOID[L:1.0,R:0.9] NOTEHEAD_BLACK[L:0.6,R:0.5]}
+2025-05-22 00:12:24,983 INFO [test_bach]       StepMonitoring.java:98   | STEMS
+2025-05-22 00:12:25,244 INFO [test_bach]       StepMonitoring.java:98   | REDUCTION
+2025-05-22 00:12:25,287 INFO [test_bach]        ReductionStep.java:105  | Stems free length median value: 41 pixels, 2.9 interlines
+2025-05-22 00:12:25,290 INFO [test_bach]       StepMonitoring.java:98   | CUE_BEAMS
+2025-05-22 00:12:25,290 INFO [test_bach]         CueBeamsStep.java:81   | Step CUE_BEAMS is skipped because small heads switch is off
+2025-05-22 00:12:25,290 INFO [test_bach]       StepMonitoring.java:98   | TEXTS
+2025-05-22 00:12:25,847 INFO [test_bach]       StepMonitoring.java:98   | MEASURES
+2025-05-22 00:12:25,852 INFO [test_bach]                 Page.java:307  | 16 raw measures: [4 in system#1, 4 in system#2, 4 in system#3, 4 in system#4]
+2025-05-22 00:12:25,853 INFO [test_bach]       StepMonitoring.java:98   | CHORDS
+2025-05-22 00:12:25,863 INFO [test_bach]       StepMonitoring.java:98   | CURVES
+2025-05-22 00:12:26,098 INFO [test_bach]         SlursBuilder.java:240  | Slurs: 27
+2025-05-22 00:12:26,105 INFO [test_bach]      SegmentsBuilder.java:155  | Segments: 4
+2025-05-22 00:12:26,108 INFO [test_bach]       StepMonitoring.java:98   | SYMBOLS
+2025-05-22 00:12:26,234 INFO [test_bach]       StepMonitoring.java:98   | LINKS
+2025-05-22 00:12:26,236 INFO [test_bach]        SentenceInter.java:461  | No chord near SentenceInter#4228{(0.713) staff:1 mFont:BS-32 Direction} ARIA
+2025-05-22 00:12:26,237 INFO [test_bach]        SymbolsLinker.java:257  | No chord linked to OctaveShiftInter#5121{(0.379) staff:1 OTTAVA ALTA}
+2025-05-22 00:12:26,238 INFO [test_bach]        SymbolsLinker.java:257  | No chord linked to OctaveShiftInter#5124{(0.487) staff:1 OTTAVA ALTA}
+2025-05-22 00:12:26,255 INFO [test_bach]       StepMonitoring.java:98   | RHYTHMS
+2025-05-22 00:12:26,268 INFO [test_bach]        MeasureRhythm.java:1045 | Measure{#3} No timeOffset for HeadChordInter#4390{(0.954/0.954) staff:1 slot#4 dur:1/16}
+2025-05-22 00:12:26,268 INFO [test_bach]                Voice.java:257  | Measure{#3} Voice{#1 excess:1/8} too long
+2025-05-22 00:12:26,269 INFO [test_bach]          StackRhythm.java:224  | S1 MeasureStack#3 no correct rhythm
+2025-05-22 00:12:26,278 INFO [test_bach]        MeasureRhythm.java:1277 | Measure{#7} Time inconsistency in {5/8=[HeadChordInter#4430{(0.951/0.951) staff:3 slot#13 off:5/8 dur:1/16}], 11/16=[HeadChordInter#4453{(0.945/0.945) staff:4 slot#13 off:11/16 dur:1/16}]}
+2025-05-22 00:12:26,285 INFO [test_bach]        MeasureRhythm.java:1045 | Measure{#13} No timeOffset for HeadChordInter#4545{(0.926/0.926) staff:8 slot#7 dur:1/4}
+2025-05-22 00:12:26,286 INFO [test_bach]          StackRhythm.java:224  | S4 MeasureStack#13 no correct rhythm
+2025-05-22 00:12:26,290 INFO [test_bach]       StepMonitoring.java:98   | PAGE
+2025-05-22 00:12:26,292 INFO [test_bach]                Voice.java:257  | Measure{#3} Voice{#1 excess:1/8} too long
+2025-05-22 00:12:26,293 INFO [test_bach]                 Book.java:2550 | Book{test_bach} storing
+2025-05-22 00:12:26,324 INFO [test_bach]                 Book.java:2531 | Stored /book.xml
+2025-05-22 00:12:26,354 INFO [test_bach]           DataHolder.java:348  | Stored /sheet#1/BINARY.png
+2025-05-22 00:12:26,658 INFO [test_bach]                Sheet.java:1562 | Stored /sheet#1/sheet#1.xml
+2025-05-22 00:12:26,659 INFO [test_bach]                 Book.java:2491 | Book stored as output/test_bach.omr
+2025-05-22 00:12:26,666 INFO [test_bach]            SheetStub.java:1644 | Disposed sheet
+2025-05-22 00:12:26,692 INFO [test_bach]                 Book.java:2018 | End of Stub#1 memory: 29,894,776
+2025-05-22 00:12:26,692 INFO [test_bach]                 Book.java:2025 | Book processed.
+2025-05-22 00:12:26,881 INFO [test_bach]            SheetStub.java:995  | Loaded /sheet#1/sheet#1.xml
+2025-05-22 00:12:27,050 INFO [test_bach]      PartwiseBuilder.java:2661 | Exporting sheet(s): [#1]
+2025-05-22 00:12:27,115 INFO [test_bach]        ScoreExporter.java:164  | Score test_bach exported to output/test_bach.mxl
+2025-05-22 00:12:27,145 INFO [test_bach]                Score.java:181  | Closing {Score 1}
