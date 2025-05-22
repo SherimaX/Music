@@ -6,6 +6,7 @@ The short-term goal is a backend-only pipeline that produces three artifacts:
 1. **A MusicXML representation of the score.**  
 2. **A PDF rendering generated from that MusicXML.**
 3. **A MIDI file generated from that MusicXML.**
+4. **An MP3 file rendered from the MIDI.**
 
 Once this minimal pipeline works, we can extend it into a full Flask web application with an interactive music-sheet viewer.
 
@@ -17,6 +18,7 @@ Once this minimal pipeline works, we can extend it into a full Flask web applica
 - [`music21`](https://web.mit.edu/music21/)
 - [`Audiveris`](https://audiveris.github.io/audiveris/) for optical music recognition
 - [`MuseScore`](https://musescore.org) (provides the `mscore` command for PDF rendering)
+- [`timidity`](https://timidity.sourceforge.net/) and `ffmpeg` for MP3 conversion
 - (Later) `Flask` for a simple web API
 
 On most Linux distributions you can install MuseScore with:
@@ -54,14 +56,14 @@ Audiveris is a standalone Java application; install it separately and make sure 
 
 ### 2.1 Python helper script
 
-Instead of running Audiveris manually, you can call **`convert_sheet.py`** to automate the conversion **and** the PDF and MIDI rendering:
+Instead of running Audiveris manually, you can call **`convert_sheet.py`** to automate the conversion **and** the PDF, MIDI, and MP3 rendering:
 
 ```bash
 python convert_sheet.py input.pdf -o output/
 ```
 
 The script accepts a single image/PDF *or* a directory of files and places the
-generated MusicXML, PDF, and MIDI files in the chosen output directory. Look for a file
+generated MusicXML, PDF, MIDI, and MP3 files in the chosen output directory. Look for a file
 named `input.mxl` (or `input.xml`) inside `output/` or its subfolders.
 
 ## Troubleshooting
@@ -109,6 +111,8 @@ After these steps you will have:
 | ------------ | ---------------------------------------- |
 | `input.mxl`  | MusicXML score produced by Audiveris (may also be `input.xml`) |
 | `output.pdf` | Rendered sheet music produced by music21 |
+| `output.mid` | MIDI file generated from the MusicXML |
+| `output.mp3` | MP3 audio rendered from the MIDI |
 
 ---
 
